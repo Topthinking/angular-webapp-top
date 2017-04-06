@@ -1,0 +1,64 @@
+#main{
+	width: 100%;
+	height: 100%;
+}
+
+/* 网站左侧的web 信息 */
+#main .web_info{
+	float: left;
+	width: 300px;
+	height: 100%;
+	border: 1px solid #ccc;
+	padding: 20px;
+
+	// 用户信息
+	.web_intro{
+		float: left;
+		width: 100%;
+		.face{
+			width: 150px;
+			height: 150px;
+			background: url("./face.jpg") no-repeat;
+			background-size: 100%;
+			border-radius: 50%;
+			margin: 0 auto;
+			cursor: pointer;
+		}
+		.name{
+			float: left;
+			width: 100%;
+			span{
+				float: left;
+				width: 100%;
+			}
+			span:first-of-type{
+				text-align: left;			
+			}
+			span:last-of-type{
+				text-align: right;
+			}
+		}
+	}
+
+	// 菜单
+	.web_menu{
+		float: left;
+		width: 100%;
+		li{
+			float: left;
+			width: 100%;			
+			margin-top: 20px;
+			a{
+				padding: 0px 20px;
+				color:#fff;
+				font-size: 16px;
+				background-color: #3385ff;
+			}			
+		}
+	}
+}
+
+/* 网站右侧的web 内容 */
+#main .web_content{
+	float: left;
+}
