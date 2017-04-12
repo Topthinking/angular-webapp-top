@@ -3,21 +3,21 @@
 let htmlWebpackPlugin = require('html-webpack-plugin');
 let webpack = require('webpack');
 let defaultSettings = require('./config/defaults');
+let path = require('path');
 
 let config = {
   entry:defaultSettings.getDefaultentry(),
-  devServer:{
-    historyApiFallback:true,
-    hot:true,
-    inline:true,
-    progress:true,
-    port:defaultSettings.port
-  },
   output:{
     path:__dirname+'/dist/',
     filename: "script/[name].[hash:6].js",
     jsonpFunction:'Topthinking',
     chunkFilename: "script/[name].[chunkhash:6].js"
+  },
+  devServer:{
+    historyApiFallback: true,
+    hot:true,
+    inline:true,
+    port:defaultSettings.port
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
@@ -31,6 +31,7 @@ let config = {
         }
       }
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new htmlWebpackPlugin({
       chunks: ['app', 'vendor'],
       template:'./src/app.html',
