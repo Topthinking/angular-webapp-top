@@ -1,4 +1,0 @@
-{
-    "^/home/edit/$":"/home/edit.json",
-    "^/access/login/$":"/access/login.json"
-}

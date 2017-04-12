@@ -2,37 +2,34 @@
 
 let htmlWebpackPlugin = require('html-webpack-plugin');
 let webpack = require('webpack');
-let defaultSettings = require('./cfg/defaults');
+let defaultSettings = require('./config/defaults');
 let path = require('path');
 let fs = require('fs');
 
 let config = {
-  entry:{
-    app:'./src/app.js',
-    vendor: [
-      "jquery",
-      "font-awesome-webpack",
-      "bootstrap-loader",
-      "angular", 
-      'angular-ui-router', 
-      'oclazyload',
-      'angular-animate'
-    ]
-  },
+  entry:defaultSettings.getDefaultentry(),
   output:{
-    path:'../blog/',
+    path:path.resolve(__dirname, '../blog'),
     filename: "script/[name].[hash:6].js",
     jsonpFunction:'Topthinking',
     chunkFilename: "script/[name].[chunkhash:6].js"
   },
-  resolve:{
-    root:__dirname+'./src/'
-  },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      options:{
+        postcss:()=>{
+          return [
+            require('autoprefixer')({
+              "broswers":["last 5 versions"]
+            })
+          ];
+        }
+      }
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress:{
-                warnings: false
-            },
+        warnings: false
+      },
       beautify:false,
       comments:false
     }),
@@ -54,7 +51,10 @@ let config = {
       jQuery:"jquery",
       "window.jQuery":"jquery"
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'script/vendor.[hash:6].js')
+    new webpack.optimize.CommonsChunkPlugin({
+      "name":"vendor",
+      "filename":"script/vendor.[hash:6].js"
+    })
   ],
   module: defaultSettings.getDefaultModules()
 };
