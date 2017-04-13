@@ -13,6 +13,7 @@ export default angular
       'set',
       'login',
       'home',
+      'home/home.news',
       'home.edit',
     ].forEach((value)=>{
   		router_list.push(require('./'+value+'/_router').name);

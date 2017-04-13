@@ -1,13 +1,12 @@
 'use strict';
 
 class HomeController {
-  constructor($scope) {	
+  constructor($scope,$state) {	
   	this.$scope = $scope;
 
     require('./home.less');
 
-    // 显示welcome
-    this.welcome = Math.random();
+   	$state.go('app.home.news');
   }
 } 
 
