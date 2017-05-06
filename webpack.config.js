@@ -9,7 +9,7 @@ let fs = require('fs');
 let config = {
   entry:defaultSettings.getDefaultentry(),
   output:{
-    path:path.resolve(__dirname, '../blog'),
+    path:path.resolve(__dirname, '../build'),
     filename: "script/[name].[hash:6].js",
     jsonpFunction:'Topthinking',
     chunkFilename: "script/[name].[chunkhash:6].js"
@@ -74,9 +74,9 @@ var deleteFolder = function(path) {
         fs.rmdirSync(path);
     }
 };
-deleteFolder('../blog/script/');
-deleteFolder('../blog/images/');
-deleteFolder('../blog/fonts/');
-deleteFolder('../blog/style/');
+deleteFolder('../build/script/');
+deleteFolder('../build/images/');
+deleteFolder('../build/fonts/');
+deleteFolder('../build/style/');
 
 module.exports = config;
