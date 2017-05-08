@@ -6,7 +6,6 @@ require('./app.less');
 angular.module(AppModule, [
     require('angular-ui-router'),
     require('oclazyload'),
-    require('angular-animate'),
     require('./view/_router').name
   ]);
 angular.bootstrap(document, [AppModule], { strictDi: true });

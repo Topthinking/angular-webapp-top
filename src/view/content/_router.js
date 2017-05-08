@@ -1,26 +1,26 @@
 'use strict';
 
-function SetRouter($stateProvider) {
+function ContentRouter($stateProvider) {
   $stateProvider
-    .state('app.set',{
-      url:'/set',
+    .state('app.content',{
+      url:'/content',
       templateProvider:($q)=>{
         let deferred = $q.defer();
         require.ensure([],()=>{
-            let template = require('./set.html');
+            let template = require('./content.html');
             deferred.resolve(template);
-        },'set-tpl');
+        },'content-tpl');
         return deferred.promise;
       },
-      controller:'SetController as vm',
+      controller:'ContentController as vm',
       resolve:{
         loadController:($q,$ocLazyLoad)=>{
           return $q((resolve)=>{
             require.ensure([],()=>{
-              let module = require('./set.controller');
+              let module = require('./content.controller');
               $ocLazyLoad.load({name:module.name});
               resolve(module.controller);
-            },'set-ctrl');
+            },'content-ctrl');
           });
         }
       }
@@ -28,5 +28,5 @@ function SetRouter($stateProvider) {
 }
 
 export default angular
-  .module('set.router', [])
-  .config(SetRouter);
+  .module('content.router', [])
+  .config(ContentRouter);

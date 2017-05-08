@@ -45,11 +45,6 @@ let config = {
             collapseWhitespace: true
           }
     }),
-    new webpack.ProvidePlugin({
-      $:'jquery',
-      jQuery:"jquery",
-      "window.jQuery":"jquery"
-    }),
     new webpack.optimize.CommonsChunkPlugin({
       "name":"vendor",
       "filename":"script/vendor.[hash:6].js"

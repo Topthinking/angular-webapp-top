@@ -5,11 +5,13 @@ class HomeController {
   	this.$scope = $scope;
 
     require('./home.less');
-
-   	$state.go('app.home.news');
+    
+    this.homelist = "123";
   }
 } 
 
 export default angular
-  .module('home.controller', [])
+  .module('home.controller', [
+  	require('../../directive/HomeList/HomeList.directive').name
+  	])
   .controller('HomeController', HomeController);

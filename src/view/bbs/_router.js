@@ -1,32 +1,32 @@
 'use strict';
 
-function LoginRouter($stateProvider) {
+function BbsRouter($stateProvider) {
   $stateProvider
-    .state('login',{
-      url:'/login',
+    .state('app.bbs',{
+      url:'/bbs',
       templateProvider:($q)=>{
         let deferred = $q.defer();
         require.ensure([],()=>{
-            let template = require('./login.html');
+            let template = require('./bbs.html');
             deferred.resolve(template);
-        },'login-tpl');
+        },'bbs-tpl');
         return deferred.promise;
       },
-      controller:'LoginController as vm',
+      controller:'BbsController as vm',
       resolve:{
         loadController:($q,$ocLazyLoad)=>{
           return $q((resolve)=>{
             require.ensure([],()=>{
-              let module = require('./login.controller');
+              let module = require('./bbs.controller');
               $ocLazyLoad.load({name:module.name});
               resolve(module.controller);
-            },'login-ctrl');
+            },'bbs-ctrl');
           });
         }
       }
-    });
+    })
 }
 
 export default angular
-  .module('login.router', [])
-  .config(LoginRouter);
+  .module('bbs.router', [])
+  .config(BbsRouter);

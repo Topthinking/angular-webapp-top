@@ -56,13 +56,9 @@ function getDefaultentry(){
   return {
     app:'./src/app.js',
     vendor: [
-      "jquery",
-      "font-awesome-webpack",
-      "bootstrap-loader",
       "angular", 
       'angular-ui-router', 
-      'oclazyload',
-      'angular-animate'
+      'oclazyload'
     ]
   }
 }
