@@ -4,7 +4,7 @@ function homelist(){
 	require('./HomeList.less');
 	return {
 		scope:{
-			data:"="
+			
 		},
 		restrict:'E',
 		template:require('./HomeList.html'),

@@ -3,10 +3,7 @@
 class HomeController {
   constructor($scope,$state) {	
   	this.$scope = $scope;
-
     require('./home.less');
-    
-    this.homelist = "123";
   }
 } 
 
